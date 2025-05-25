@@ -6,9 +6,6 @@
   <title>에코델타시티 아테라</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    html {
-  scroll-behavior: smooth;
-}
     * {
       margin: 0;
       padding: 0;
@@ -101,19 +98,33 @@
       display: block;
     }
 
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
+    /* 메인 이미지 아래 텍스트 */
+    .main-text {
       text-align: center;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-      padding: 1rem;
+      margin: 1.5rem 1rem 3rem 1rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #004c97;
     }
 
-    .hero-text h1 {
-      font-size: 2.5rem;
+    .main-text h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .main-text p {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+
+    .main-text h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      background: linear-gradient(90deg, #004c97, #0078cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
     }
 
     section {
@@ -180,23 +191,20 @@
         display: flex;
       }
 
-.hero-text {
-  text-align: center;
-  margin: 1rem 0 2rem 0;
-}
+      .main-text h2 {
+        font-size: 1.4rem;
+      }
+      .main-text p {
+        font-size: 1rem;
+      }
+      .main-text h1 {
+        font-size: 2rem;
+      }
 
-.hero-text h1 {
-  font-size: 2rem;
-  color: #004c97; /* 진한 파란색 */
-  font-weight: 700;
-}
-
-/* 모바일에서 글씨 작게 조정 */
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 1.2rem;
-  }
-}
+      section {
+        padding: 2rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -227,10 +235,13 @@
 
   <div class="hero">
     <img src="https://koomanizm.github.io/ecoartera/mainhome.jpg" alt="에코델타시티 금호아테라 메인 이미지" />
-    <div class="hero-text">
-      <h1>에코델타시티 아테라<br>5월25일 선착순분양<br>GRAND OPEN</h1>
-    </div>
   </div>
+
+  <section class="main-text">
+    <h2>에코델타시티 아테라</h2>
+    <p>5월 25일 선착순 모집</p>
+    <h1>GRAND OPEN</h1>
+  </section>
 
   <section id="intro">
     <h2>단지소개</h2>
