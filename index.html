@@ -259,8 +259,8 @@
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault(); // 기본 이동 막기
-      const targetId = this.getAttribute('href').substring(1); // '#intro' → 'intro'
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         const elementPosition = targetEl.getBoundingClientRect().top;
@@ -271,7 +271,7 @@
           behavior: 'smooth'
         });
 
-        // 햄버거 메뉴가 열려 있으면 닫기
+        // 햄버거 메뉴 닫기
         const nav = document.getElementById('nav');
         if (nav.classList.contains('show')) {
           nav.classList.remove('show');
@@ -279,7 +279,6 @@
       }
     });
   });
-
 </script>
 
 </body>
