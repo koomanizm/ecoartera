@@ -187,7 +187,7 @@
   <header>
     <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
       <h2>에코델타시티 아테라</h2>
-      <div class="menu-toggle" onclick="toggleMenu()">
+     <div class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -257,7 +257,7 @@
   </footer>
 
 <script>
-  const headerOffset = document.querySelector('header').offsetHeight;
+  const headerOffset = document.querySelector('header').offsetHeight + 5;
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -265,8 +265,7 @@
       const targetId = this.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
@@ -281,10 +280,21 @@
       }
     });
   });
-    function toggleMenu() {
+
+  function toggleMenu() {
     const nav = document.getElementById('nav');
     nav.classList.toggle('show');
   }
+
+  // 바깥 클릭 시 nav 닫기
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const isClickInside = nav.contains(e.target) || menuToggle.contains(e.target);
+    if (!isClickInside && nav.classList.contains('show')) {
+      nav.classList.remove('show');
+    }
+  });
 </script>
 
 </body>
