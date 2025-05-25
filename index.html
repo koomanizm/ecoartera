@@ -24,6 +24,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      height: 80px; /* 고정 높이 */
     }
 
     header h2 {
@@ -82,10 +83,17 @@
       margin: auto;
     }
 
+    /* 첫 섹션 제목가 너무 위로 붙는 문제 보정 */
+    #intro {
+      padding-top: 80px;
+      margin-top: -80px;
+    }
+
     section h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
       color: #004c97;
+      scroll-margin-top: 80px; /* 헤더 높이만큼 제목 스크롤 보정 */
     }
 
     section p {
@@ -124,9 +132,7 @@
       color: #ccc;
       text-decoration: underline;
     }
-   
 
-    
     /* 📱 모바일 반응형 */
     @media (max-width: 768px) {
       nav {
@@ -147,6 +153,8 @@
       header {
         flex-direction: column;
         align-items: flex-start;
+        height: auto; /* 모바일에선 높이 자동 */
+        padding: 1rem 2rem;
       }
 
       .hero {
@@ -205,7 +213,6 @@
     <h1>에코델타시티 금호아테라에 오신 것을 환영합니다</h1>
   </div>
 
-  <!-- 이하 section들 원래 코드 동일하게 유지 -->
   <section id="intro">
     <h2>단지소개</h2>
     <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
@@ -223,7 +230,6 @@
     <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
-    
   </section>
 
   <section id="location">
@@ -244,8 +250,6 @@
     <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄">
   </section>
 
-  <!-- ... (intro / units / location / community / premium / contact) -->
-  <!-- 관심고객등록 버튼 -->
   <section id="contact">
     <h2>관심고객등록</h2>
     <p>관심 고객 등록 시 분양정보, 일정 등을 가장 빠르게 알려드립니다.</p>
@@ -256,36 +260,27 @@
     <p>&copy; 2025 에코델타시티 금호아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
   </footer>
 
-<script>
-  const headerOffset = document.querySelector('header').offsetHeight;
-
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-
-        // 햄버거 메뉴 닫기
-        const nav = document.getElementById('nav');
-        if (nav.classList.contains('show')) {
-          nav.classList.remove('show');
+  <script>
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+          // 메뉴 닫기
+          const nav = document.getElementById('nav');
+          if (nav.classList.contains('show')) {
+            nav.classList.remove('show');
+          }
         }
-      }
+      });
     });
-  });
-    function toggleMenu() {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('show');
-  }
-</script>
 
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
