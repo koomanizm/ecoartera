@@ -12,12 +12,14 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Noto Sans KR', sans-serif;
       line-height: 1.6;
       color: #333;
       background-color: #fff;
     }
+
     header {
       background-color: #fff;
       border-bottom: 1px solid #eee;
@@ -29,77 +31,147 @@
       top: 0;
       z-index: 10;
     }
+
     header h2 {
       font-size: 1.5rem;
       color: #004c97;
     }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
     nav a {
-      margin-left: 1.5rem;
       text-decoration: none;
       color: #004c97;
       font-weight: 500;
       transition: color 0.3s;
     }
+
     nav a:hover {
       color: #009bda;
     }
+
     .hero {
       background: url("https://koomanizm.github.io/ecoartera/mainhome.jpg") no-repeat center center/cover;
-      height: 90vh;
+      height: 80vh;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
       text-align: center;
+      padding: 1rem;
     }
+
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
     }
+
     section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
       margin: auto;
     }
+
     section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #004c97;
     }
+
     section p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
+
     section img {
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
     }
+
     .contact-button {
       display: inline-block;
       background-color: #004c97;
       color: #fff;
       padding: 0.8rem 1.5rem;
       font-size: 1rem;
-      border: none;
       border-radius: 5px;
       text-decoration: none;
       transition: background-color 0.3s;
     }
+
     .contact-button:hover {
       background-color: #0078cc;
     }
+
     footer {
       background-color: #111;
       color: #fff;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
     }
+
     footer a {
       color: #ccc;
       text-decoration: underline;
+    }
+
+    /* ✅ 반응형 모바일 스타일 */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+      }
+
+      .hero {
+        height: 50vh;
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      section h2 {
+        font-size: 1.3rem;
+      }
+
+      section p {
+        font-size: 0.95rem;
+      }
+
+      .contact-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      footer {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -115,6 +187,7 @@
       <a href="#contact">관심고객등록</a>
     </nav>
   </header>
+
   <div class="hero">
     <h1>에코델타시티 금호아테라에 오신 것을 환영합니다</h1>
   </div>
@@ -131,12 +204,6 @@
     <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
-    
   </section>
 
   <section id="location">
