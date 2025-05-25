@@ -24,7 +24,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      height: 80px; /* 고정 높이 */
+      height: 80px; /* 헤더 높이 고정 */
     }
 
     header h2 {
@@ -83,17 +83,15 @@
       margin: auto;
     }
 
-    /* 첫 섹션 제목가 너무 위로 붙는 문제 보정 */
+    /* 첫번째 섹션 위에 여백 추가 */
     #intro {
-      padding-top: 80px;
-      margin-top: -80px;
+      padding-top: 5rem; /* 기존 4rem에서 5rem으로 여백 더 줌 */
     }
 
     section h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
       color: #004c97;
-      scroll-margin-top: 80px; /* 헤더 높이만큼 제목 스크롤 보정 */
     }
 
     section p {
@@ -153,7 +151,7 @@
       header {
         flex-direction: column;
         align-items: flex-start;
-        height: auto; /* 모바일에선 높이 자동 */
+        height: auto; /* 높이 고정 해제 */
         padding: 1rem 2rem;
       }
 
@@ -260,27 +258,45 @@
     <p>&copy; 2025 에코델타시티 금호아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
   </footer>
 
-  <script>
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' });
-          // 메뉴 닫기
-          const nav = document.getElementById('nav');
-          if (nav.classList.contains('show')) {
-            nav.classList.remove('show');
-          }
-        }
-      });
-    });
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('show');
+  }
 
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('show');
-    }
-  </script>
+  // 헤더 높이(px)
+  const headerHeight = 80;
+
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+
+      if (targetEl) {
+        const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+        let offsetPosition = elementPosition - headerHeight;
+
+        // 첫 섹션(#intro)은 위에 조금 더 여백 두기 (20px 추가)
+        if (targetId === 'intro') {
+          offsetPosition -= 20;
+          if (offsetPosition < 0) offsetPosition = 0; // 음수 방지
+        }
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // 메뉴 닫기
+        const nav = document.getElementById('nav');
+        if (nav.classList.contains('show')) {
+          nav.classList.remove('show');
+        }
+      }
+    });
+  });
+</script>
 </body>
 </html>
