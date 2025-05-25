@@ -2,301 +2,204 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>에코델타시티 아테라</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
       font-family: 'Noto Sans KR', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
+      scroll-behavior: auto; /* 자동 스크롤 비활성화(수동제어용) */
     }
-
     header {
-      background-color: #fff;
-      border-bottom: 1px solid #eee;
-      padding: 1rem 2rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      height: 80px; /* 헤더 높이 고정 */
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 9999;
     }
-
     header h2 {
-      font-size: 1.5rem;
       color: #004c97;
     }
-
     nav {
       display: flex;
-      gap: 1.2rem;
+      gap: 20px;
     }
-
     nav a {
-      text-decoration: none;
       color: #004c97;
-      font-weight: 500;
-      transition: color 0.3s;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
     }
-
-    nav a:hover {
-      color: #009bda;
-    }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      gap: 5px;
     }
-
     .menu-toggle span {
+      width: 25px;
       height: 3px;
       background: #004c97;
-      margin: 4px 0;
-      width: 25px;
+      border-radius: 2px;
     }
-
-    .hero {
-      background: url("https://koomanizm.github.io/ecoartera/mainhome.jpg") no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* 첫번째 섹션 위에 여백 추가 */
-    #intro {
-      padding-top: 5rem; /* 기존 4rem에서 5rem으로 여백 더 줌 */
-    }
-
-    section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      color: #004c97;
-    }
-
-    section p {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    section img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .contact-button {
-      display: inline-block;
-      background-color: #004c97;
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-
-    footer {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ccc;
-      text-decoration: underline;
-    }
-
-    /* 📱 모바일 반응형 */
+    /* 모바일 */
     @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
-        width: 100%;
-        margin-top: 1rem;
+        background: white;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        padding: 10px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
-
       nav.show {
         display: flex;
       }
-
       .menu-toggle {
         display: flex;
       }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto; /* 높이 고정 해제 */
-        padding: 1rem 2rem;
-      }
-
-      .hero {
-        height: 40vh;
-      }
-
-      .hero h1 {
-        font-size: 1.4rem;
-      }
-
-      section {
-        padding: 2rem 1rem;
-      }
-
-      section h2 {
-        font-size: 1.2rem;
-      }
-
-      section p {
-        font-size: 0.95rem;
-      }
-
-      .contact-button {
-        width: 100%;
-        text-align: center;
-        font-size: 1rem;
-        padding: 1rem;
-      }
-
-      footer {
-        font-size: 0.8rem;
-        padding: 1.5rem 1rem;
-      }
     }
+
+    /* 섹션 공통 */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 60px; /* 상단 패딩 충분히 줌 (헤더 높이+여백) */
+    }
+    /* 첫 섹션은 좀 더 여백 */
+    #intro {
+      padding-top: 120px;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #004c97;
+    }
+    section p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    /* hero */
+    .hero {
+      height: 60vh;
+      background: url("https://koomanizm.github.io/ecoartera/mainhome.jpg") no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+      font-size: 2rem;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 80px; /* 헤더 높이만큼 마진 줌 */
+    }
+
+    /* 기타 스타일 생략 */
+
   </style>
 </head>
 <body>
-  <header>
-    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-      <h2>에코델타시티 아테라</h2>
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <nav id="nav">
-      <a href="#intro">단지소개</a>
-      <a href="#units">세대정보</a>
-      <a href="#location">입지환경</a>
-      <a href="#community">커뮤니티</a>
-      <a href="#premium">프리미엄</a>
-      <a href="#contact">관심고객등록</a>
-    </nav>
-  </header>
 
-  <div class="hero">
-    <h1>에코델타시티 금호아테라에 오신 것을 환영합니다</h1>
+<header>
+  <h2>에코델타시티 아테라</h2>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
+  <nav id="nav">
+    <a href="#intro">단지소개</a>
+    <a href="#units">세대정보</a>
+    <a href="#location">입지환경</a>
+    <a href="#community">커뮤니티</a>
+    <a href="#premium">프리미엄</a>
+    <a href="#contact">관심고객등록</a>
+  </nav>
+</header>
 
-  <section id="intro">
-    <h2>단지소개</h2>
-    <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
-    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개">
-  </section>
+<div class="hero">
+  에코델타시티 금호아테라에 오신 것을 환영합니다
+</div>
 
-  <section id="units">
-    <h2>세대정보</h2>
-    <p>59㎡, 74㎡, 84㎡ 등 다양한 타입으로 구성된 세대 설계.<br>모든 평면은 실용성과 편의성을 고려한 최적의 구조입니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
-  </section>
+<section id="intro">
+  <h2>단지소개</h2>
+  <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간...</p>
+</section>
 
-  <section id="location">
-    <h2>입지환경</h2>
-    <p>부산 에코델타시티 내 최고의 중심입지.<br>부산 신항, 김해공항, 명지국제신도시와 가까운 미래 가치.</p>
-    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경">
-  </section>
+<section id="units">
+  <h2>세대정보</h2>
+  <p>59㎡, 74㎡, 84㎡ 등 다양한 타입으로 구성...</p>
+</section>
 
-  <section id="community">
-    <h2>커뮤니티</h2>
-    <p>어린이집, 피트니스, 골프연습장, 독서실 등 입주민만을 위한 프리미엄 커뮤니티 시설 완비.</p>
-    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설">
-  </section>
+<section id="location">
+  <h2>입지환경</h2>
+  <p>부산 에코델타시티 내 최고의 중심입지...</p>
+</section>
 
-  <section id="premium">
-    <h2>프리미엄</h2>
-    <p>최첨단 스마트 시스템과 친환경 설계, 명품 마감재까지.<br>주거의 품격을 높이는 다양한 프리미엄 요소가 집약되어 있습니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄">
-  </section>
+<section id="community">
+  <h2>커뮤니티</h2>
+  <p>어린이집, 피트니스, 골프연습장 등...</p>
+</section>
 
-  <section id="contact">
-    <h2>관심고객등록</h2>
-    <p>관심 고객 등록 시 분양정보, 일정 등을 가장 빠르게 알려드립니다.</p>
-    <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">관심고객 등록하기</a>
-  </section>
+<section id="premium">
+  <h2>프리미엄</h2>
+  <p>최첨단 스마트 시스템과 친환경 설계...</p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 에코델타시티 금호아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
-  </footer>
+<section id="contact">
+  <h2>관심고객등록</h2>
+  <p>관심 고객 등록 시 분양정보, 일정 등을 가장 빠르게 알려드립니다.</p>
+</section>
 
 <script>
-  function toggleMenu() {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('show');
-  }
-
-  // 헤더 높이(px)
   const headerHeight = 80;
+  const nav = document.getElementById('nav');
+  const menuToggle = document.querySelector('.menu-toggle');
 
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
       e.preventDefault();
 
-      const targetId = this.getAttribute('href').substring(1);
+      const targetId = link.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
 
-      if (targetEl) {
-        const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
-        let offsetPosition = elementPosition - headerHeight;
+      // 스크롤 위치 계산 (고정 헤더 높이 빼기)
+      const elementTop = targetEl.getBoundingClientRect().top + window.pageYOffset;
+      let offsetPosition = elementTop - headerHeight;
 
-        // 첫 섹션(#intro)은 위에 조금 더 여백 두기 (20px 추가)
-        if (targetId === 'intro') {
-          offsetPosition -= 20;
-          if (offsetPosition < 0) offsetPosition = 0; // 음수 방지
-        }
+      // 첫 섹션은 좀 더 여백
+      if(targetId === 'intro') {
+        offsetPosition -= 20;
+        if(offsetPosition < 0) offsetPosition = 0;
+      }
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
 
-        // 메뉴 닫기
-        const nav = document.getElementById('nav');
-        if (nav.classList.contains('show')) {
-          nav.classList.remove('show');
-        }
+      // 메뉴 닫기 (모바일)
+      if(nav.classList.contains('show')){
+        nav.classList.remove('show');
       }
     });
   });
 </script>
+
 </body>
 </html>
