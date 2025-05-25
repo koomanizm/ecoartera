@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>에코델타시티 금호아테라</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -33,6 +33,10 @@
       font-size: 1.5rem;
       color: #004c97;
     }
+    nav {
+      display: flex;
+      align-items: center;
+    }
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
@@ -43,6 +47,46 @@
     nav a:hover {
       color: #009bda;
     }
+    /* 햄버거 메뉴 */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #004c97;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    /* 모바일 메뉴 숨김 */
+    nav.mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 20;
+    }
+    nav.mobile-menu a {
+      margin: 0.8rem 0;
+    }
     .hero {
       background: url("https://koomanizm.github.io/ecoartera/mainhome.jpg") no-repeat center center/cover;
       height: 90vh;
@@ -52,6 +96,7 @@
       color: #fff;
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
       text-align: center;
+      padding: 0 1rem;
     }
     .hero h1 {
       font-size: 3rem;
@@ -75,6 +120,7 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
     }
     .contact-button {
       display: inline-block;
@@ -101,6 +147,38 @@
       color: #ccc;
       text-decoration: underline;
     }
+    /* 반응형 */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      nav.mobile-menu {
+        display: flex;
+        right: 1rem;
+        top: 56px;
+        padding: 1rem;
+        width: 200px;
+      }
+      .hero {
+        height: 60vh;
+        background-size: cover;
+        background-position: center;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      section {
+        padding: 3rem 1rem;
+      }
+      section img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
   </style>
 </head>
 <body>
@@ -114,7 +192,23 @@
       <a href="#premium">프리미엄</a>
       <a href="#contact">관심고객등록</a>
     </nav>
+
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#intro">단지소개</a>
+    <a href="#units">세대정보</a>
+    <a href="#location">입지환경</a>
+    <a href="#community">커뮤니티</a>
+    <a href="#premium">프리미엄</a>
+    <a href="#contact">관심고객등록</a>
+  </nav>
+
   <div class="hero">
     <h1>에코델타시티 금호아테라에 오신 것을 환영합니다</h1>
   </div>
@@ -122,39 +216,38 @@
   <section id="intro">
     <h2>단지소개</h2>
     <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
-    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개">
+    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개" />
   </section>
 
   <section id="units">
     <h2>세대정보</h2>
     <p>59㎡, 74㎡, 84㎡ 등 다양한 타입으로 구성된 세대 설계.<br>모든 평면은 실용성과 편의성을 고려한 최적의 구조입니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
-    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
-    
+    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도" />
   </section>
 
   <section id="location">
     <h2>입지환경</h2>
     <p>부산 에코델타시티 내 최고의 중심입지.<br>부산 신항, 김해공항, 명지국제신도시와 가까운 미래 가치.</p>
-    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경">
+    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경" />
   </section>
 
   <section id="community">
     <h2>커뮤니티</h2>
     <p>어린이집, 피트니스, 골프연습장, 독서실 등 입주민만을 위한 프리미엄 커뮤니티 시설 완비.</p>
-    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설">
+    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설" />
   </section>
 
   <section id="premium">
     <h2>프리미엄</h2>
     <p>최첨단 스마트 시스템과 친환경 설계, 명품 마감재까지.<br>주거의 품격을 높이는 다양한 프리미엄 요소가 집약되어 있습니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄">
+    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄" />
   </section>
 
   <section id="contact">
@@ -164,7 +257,33 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 에코델타시티 금호아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
+    <p>
+      &copy; 2025 에코델타시티 금호아테라.<br />
+      이미지 출처:
+      <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a>
+    </p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      if (mobileMenu.style.display === 'flex') {
+        mobileMenu.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'flex';
+      }
+    });
+
+    // 모바일 메뉴 내 링크 클릭 시 메뉴 닫기
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
