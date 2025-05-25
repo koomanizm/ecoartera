@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>에코델타시티 금호아테라</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에코델타시티 아테라</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -33,10 +33,6 @@
       font-size: 1.5rem;
       color: #004c97;
     }
-    nav {
-      display: flex;
-      align-items: center;
-    }
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
@@ -47,7 +43,8 @@
     nav a:hover {
       color: #009bda;
     }
-    /* 햄버거 메뉴 */
+
+    /* 햄버거 메뉴 스타일 */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -70,23 +67,33 @@
     .hamburger.active div:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
     }
-    /* 모바일 메뉴 숨김 */
+
     nav.mobile-menu {
       display: none;
       flex-direction: column;
-      background-color: #fff;
       position: absolute;
-      top: 60px;
-      right: 2rem;
+      top: 60px; /* header 높이 고려 */
+      right: 1rem;
+      background-color: #fff;
       border: 1px solid #eee;
-      border-radius: 5px;
+      border-radius: 6px;
       padding: 1rem 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 20;
+    }
+    nav.mobile-menu.show {
+      display: flex;
     }
     nav.mobile-menu a {
       margin: 0.8rem 0;
+      color: #004c97;
+      text-decoration: none;
+      font-weight: 500;
     }
+    nav.mobile-menu a:hover {
+      color: #009bda;
+    }
+
     .hero {
       background: url("https://koomanizm.github.io/ecoartera/mainhome.jpg") no-repeat center center/cover;
       height: 90vh;
@@ -114,13 +121,13 @@
     section p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
+      line-height: 1.5;
     }
     section img {
       width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      object-fit: cover;
     }
     .contact-button {
       display: inline-block;
@@ -147,36 +154,22 @@
       color: #ccc;
       text-decoration: underline;
     }
+
     /* 반응형 */
+
     @media (max-width: 768px) {
       nav {
-        display: none;
+        display: none; /* 기존 메뉴 숨김 */
       }
       .hamburger {
         display: flex;
       }
-      nav.mobile-menu {
-        display: flex;
-        right: 1rem;
-        top: 56px;
-        padding: 1rem;
-        width: 200px;
-      }
       .hero {
-        height: 60vh;
+        height: 50vh; /* 모바일에서 메인 이미지 높이 줄임 */
         background-size: cover;
-        background-position: center;
       }
       .hero h1 {
         font-size: 1.8rem;
-      }
-      section {
-        padding: 3rem 1rem;
-      }
-      section img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
       }
     }
   </style>
@@ -184,6 +177,8 @@
 <body>
   <header>
     <h2>에코델타시티 아테라</h2>
+
+    <!-- PC 메뉴 -->
     <nav>
       <a href="#intro">단지소개</a>
       <a href="#units">세대정보</a>
@@ -193,14 +188,16 @@
       <a href="#contact">관심고객등록</a>
     </nav>
 
-    <div class="hamburger" id="hamburger">
+    <!-- 햄버거 버튼 -->
+    <div class="hamburger" id="hamburger" aria-label="메뉴 열기" role="button" tabindex="0">
       <div></div>
       <div></div>
       <div></div>
     </div>
   </header>
 
-  <nav class="mobile-menu" id="mobileMenu">
+  <!-- 모바일 메뉴 -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="모바일 메뉴">
     <a href="#intro">단지소개</a>
     <a href="#units">세대정보</a>
     <a href="#location">입지환경</a>
@@ -216,73 +213,75 @@
   <section id="intro">
     <h2>단지소개</h2>
     <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
-    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개" />
+    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개">
   </section>
 
   <section id="units">
     <h2>세대정보</h2>
     <p>59㎡, 74㎡, 84㎡ 등 다양한 타입으로 구성된 세대 설계.<br>모든 평면은 실용성과 편의성을 고려한 최적의 구조입니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도" />
-    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도" />
+    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
   </section>
 
   <section id="location">
     <h2>입지환경</h2>
     <p>부산 에코델타시티 내 최고의 중심입지.<br>부산 신항, 김해공항, 명지국제신도시와 가까운 미래 가치.</p>
-    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경" />
+    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경">
   </section>
 
   <section id="community">
     <h2>커뮤니티</h2>
-    <p>어린이집, 피트니스, 골프연습장, 독서실 등 입주민만을 위한 프리미엄 커뮤니티 시설 완비.</p>
-    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설" />
+    <p>힐링과 휴식을 위한 공원, 수변 산책로, 어린이 놀이터와 피트니스 센터 등 다양한 커뮤니티 시설 제공.</p>
+    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설">
   </section>
 
   <section id="premium">
     <h2>프리미엄</h2>
-    <p>최첨단 스마트 시스템과 친환경 설계, 명품 마감재까지.<br>주거의 품격을 높이는 다양한 프리미엄 요소가 집약되어 있습니다.</p>
-    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄" />
+    <p>에코델타시티 최초 스마트홈 시스템, 친환경 설계, 고급 마감재 사용으로 차별화된 프리미엄 주거 공간.</p>
+    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄">
   </section>
 
   <section id="contact">
     <h2>관심고객등록</h2>
-    <p>관심 고객 등록 시 분양정보, 일정 등을 가장 빠르게 알려드립니다.</p>
-    <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">관심고객 등록하기</a>
+    <p>아테라에 관심이 있으신가요? 아래 버튼을 눌러 관심고객 등록을 해주세요.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8Wg6CtPHEV6l2biW9JqyDYW1Pn4Yhl2bpoZezA5o33yV6xA/viewform" target="_blank" class="contact-button" rel="noopener noreferrer">관심고객 등록하기</a>
   </section>
 
   <footer>
-    <p>
-      &copy; 2025 에코델타시티 금호아테라.<br />
-      이미지 출처:
-      <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a>
-    </p>
+    &copy; 2025 에코델타시티 금호아테라. All rights reserved. &nbsp; | &nbsp;
+    <a href="https://koomanizm.github.io/ecoartera/" target="_blank" rel="noopener noreferrer">홈페이지</a>
   </footer>
 
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
+    // 햄버거 클릭 시 메뉴 토글
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
-      if (mobileMenu.style.display === 'flex') {
-        mobileMenu.style.display = 'none';
-      } else {
-        mobileMenu.style.display = 'flex';
-      }
+      mobileMenu.classList.toggle('show');
     });
 
-    // 모바일 메뉴 내 링크 클릭 시 메뉴 닫기
+    // 모바일 메뉴 클릭 시 메뉴 닫기
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
-        mobileMenu.style.display = 'none';
+        mobileMenu.classList.remove('show');
       });
+    });
+
+    // 키보드 접근성 - Enter, Space 키로도 햄버거 열기 가능
+    hamburger.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
     });
   </script>
 </body>
