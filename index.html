@@ -254,27 +254,13 @@
     <p>&copy; 2025 에코델타시티 금호아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('show');
-     }
-    document.querySelectorAll('#nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        const nav = document.getElementById('nav');
-        if (nav.classList.contains('show')) {
-          nav.classList.remove('show');
-        }
-      });
-    });
-  </script>
-  <script>
+<script>
   const headerOffset = document.querySelector('header').offsetHeight;
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault(); // 기본 앵커 동작 방지
-      const targetId = this.getAttribute('href').substring(1);
+      e.preventDefault(); // 기본 이동 막기
+      const targetId = this.getAttribute('href').substring(1); // '#intro' → 'intro'
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         const elementPosition = targetEl.getBoundingClientRect().top;
@@ -285,7 +271,7 @@
           behavior: 'smooth'
         });
 
-        // 메뉴 닫기 (모바일)
+        // 햄버거 메뉴가 열려 있으면 닫기
         const nav = document.getElementById('nav');
         if (nav.classList.contains('show')) {
           nav.classList.remove('show');
@@ -293,6 +279,7 @@
       }
     });
   });
-</script>
+</script
+
 </body>
 </html>
