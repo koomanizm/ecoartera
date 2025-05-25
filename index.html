@@ -258,20 +258,28 @@
   </footer>
 
 <script>
-  const headerOffset = document.querySelector('header').offsetHeight + 5;
+  function toggleMenu() {
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('show');
+  }
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        const offsetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
+      if (targetEl) {
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
+
+        // 약간의 여유를 위해 scroll 후 header 높이만큼 위로 이동
+        setTimeout(() => {
+          const headerOffset = document.querySelector('header').offsetHeight;
+          window.scrollBy(0, -headerOffset);
+        }, 300); // scrollIntoView 애니메이션이 완료된 후 실행
 
         // 햄버거 메뉴 닫기
         const nav = document.getElementById('nav');
@@ -280,21 +288,6 @@
         }
       }
     });
-  });
-
-  function toggleMenu() {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('show');
-  }
-
-  // 바깥 클릭 시 nav 닫기
-  document.addEventListener('click', function(e) {
-    const nav = document.getElementById('nav');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const isClickInside = nav.contains(e.target) || menuToggle.contains(e.target);
-    if (!isClickInside && nav.classList.contains('show')) {
-      nav.classList.remove('show');
-    }
   });
 </script>
 
