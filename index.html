@@ -80,7 +80,6 @@
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
-      scroll-margin-top: 80px;
     }
 
     section h2 {
@@ -182,20 +181,13 @@
         padding: 1.5rem 1rem;
       }
     }
-    section::before {
-  content: "";
-  display: block;
-  height: 70px;
-  margin-top: -70px;
-  visibility: hidden;
-}
   </style>
 </head>
 <body>
   <header>
     <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
       <h2>에코델타시티 아테라</h2>
-     <div class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기" role="button" tabindex="0">
+      <div class="menu-toggle" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -265,28 +257,21 @@
   </footer>
 
 <script>
-  function toggleMenu() {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('show');
-  }
+  const headerOffset = document.querySelector('header').offsetHeight;
 
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
-
       if (targetEl) {
-        targetEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        // 약간의 여유를 위해 scroll 후 header 높이만큼 위로 이동
-        setTimeout(() => {
-          const headerOffset = document.querySelector('header').offsetHeight;
-          window.scrollBy(0, -headerOffset);
-        }, 300); // scrollIntoView 애니메이션이 완료된 후 실행
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
 
         // 햄버거 메뉴 닫기
         const nav = document.getElementById('nav');
@@ -296,6 +281,10 @@
       }
     });
   });
+    function toggleMenu() {
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('show');
+  }
 </script>
 
 </body>
