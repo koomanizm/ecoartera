@@ -60,6 +60,60 @@
     }
     /* ✅ 반응형 개선 */
 @media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 0 1rem;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav a {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    height: 40vh;
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+
+  section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  section h2 {
+    font-size: 1rem;
+  }
+
+  section p {
+    font-size: 0.85rem;
+  }
+
+  .contact-button {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1.5rem 1rem;
+  }
+}
+    {
   header {
     flex-direction: column;         /* 헤더 항목들을 위에서 아래로 정렬 */
     align-items: flex-start;        /* 왼쪽 정렬 */
