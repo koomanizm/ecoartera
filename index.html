@@ -6,6 +6,18 @@
   <title>에코델타시티 아테라</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    <div class="hero-text-overlay">
+  <div>25평형(희귀) / 34평형(방4)</div>
+  <div>(초품아 입지)</div>
+  <div>
+    예약 후 방문 시 
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Emart_logo.svg/2560px-Emart_logo.svg.png" alt="e마트" style="height: 1.2rem; vertical-align: middle;"> 
+    상품권 증정!
+  </div>
+  <div style="margin-top: 0.5rem; font-size: 1.2rem; color: #ffeb3b; text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
+    평당 1600만원대 분양가!
+  </div>
+</div>
     * {
       margin: 0;
       padding: 0;
@@ -86,77 +98,6 @@
       height: auto;
       display: block;
     }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .hero-text-overlay {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #fff;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-      font-size: 2rem;
-      font-weight: bold;
-      line-height: 1.4;
-    }
-    .hero-text-overlay div {
-      opacity: 0;
-      animation-fill-mode: forwards;
-      animation-name: fadeInUp;
-      animation-duration: 0.8s;
-    }
-    .hero-text-overlay div:nth-child(1) { animation-delay: 0.2s; }
-    .hero-text-overlay div:nth-child(2) { animation-delay: 0.5s; }
-    .hero-text-overlay div:nth-child(3) { animation-delay: 0.8s; }
-    .hero-text-overlay div:nth-child(4) {
-      animation-delay: 1.1s;
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-      color: #ffeb3b;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    }
-    .hero-text-overlay img {
-      height: 1.2rem;
-      vertical-align: middle;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .main-text h2 {
-        font-size: 1.6rem;
-      }
-      section h2 {
-        font-size: 1.4rem;
-      }
-      section p {
-        font-size: 1rem;
-      }
-      .hero-text-overlay {
-        font-size: 1rem;
-        padding: 0 1rem;
-      }
-      .hero-text-overlay div:nth-child(4) {
-        font-size: 1rem;
-      }
-      section {
-        padding: 2rem 1rem;
-      }
-    }
-
     .main-text {
       width: 100%;
       display: flex;
@@ -173,6 +114,20 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .main-text h2 {
+        font-size: 1.4rem;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
     }
     section {
       padding: 4rem 2rem;
@@ -231,7 +186,7 @@
       <a href="#location">입지환경</a>
       <a href="#community">커뮤니티</a>
       <a href="#premium">프리미엄</a>
-      <a href="#contact">관심고객등록</a>
+      <a href="#contact">방문예약등록</a>
     </nav>
     <div class="hamburger" id="hamburger">
       <div></div>
@@ -244,25 +199,75 @@
       <a href="#location">입지환경</a>
       <a href="#community">커뮤니티</a>
       <a href="#premium">프리미엄</a>
-      <a href="#contact">관심고객등록</a>
+      <a href="#contact">방문예약등록</a>
     </div>
   </header>
 
   <div class="hero">
     <img src="https://koomanizm.github.io/ecoartera/mainhome.jpg" alt="에코델타시티 금호아테라 메인 이미지" />
-    <div class="hero-text-overlay">
-      <div>25평형(희귀) / 34평형(방4)</div>
-      <div>(초품아 입지)</div>
-      <div>예약 후 방문 시 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Emart_logo.svg/2560px-Emart_logo.svg.png" alt="e마트"> 상품권 증정!</div>
-      <div>평당 1600만원대 분양가!</div>
-    </div>
   </div>
 
   <section class="main-text">
-    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<br><span style="display:block;">GRAND OPEN</span></h2>
+    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<br>GRAND OPEN</h2>
   </section>
 
-  <!-- 나머지 내용 동일 -->
+  <section id="intro">
+    <h2>단지소개</h2>
+    <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
+    <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개">
+  </section>
+
+  <section id="units">
+    <h2>세대정보</h2>
+    <p>59㎡, 84㎡ 등 다양한 타입으로 구성된 세대 설계.<br>모든 평면은 실용성과 편의성을 고려한 최적의 구조입니다.</p>
+     <div style="text-align: center; margin-top: 2.2rem;">
+      <a href="https://vrapoint.speedgabia.com/insite-ol/?pid=ecodelta24bl" target="_blank" style="display: inline-block; font-size: 3rem; color: #004c97; font-weight: bold; text-decoration: underline;">
+       [ 아테라 PY/TYPE별 사이버모델하우스 보기 ]
+      </a>
+       <br></br>
+    </div>
+    <img src="https://koomanizm.github.io/ecoartera/unit01.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit02.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit03.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit04.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit05.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
+    <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
+
+   
+  </section>
+
+  <section id="location">
+    <h2>입지환경</h2>
+    <p>부산 에코델타시티 내 최고의 중심입지.<br>부산 신항, 김해공항, 명지국제신도시와 가까운 미래 가치.</p>
+    <img src="https://koomanizm.github.io/ecoartera/location.jpg" alt="입지환경">
+  </section>
+
+  <section id="community">
+    <h2>커뮤니티</h2>
+    <p>어린이집, 피트니스, 골프연습장, 독서실 등 입주민만을 위한 프리미엄 커뮤니티 시설 완비.</p>
+    <img src="https://koomanizm.github.io/ecoartera/community.jpg" alt="커뮤니티 시설">
+  </section>
+
+  <section id="premium">
+    <h2>프리미엄</h2>
+    <p>최첨단 스마트 시스템과 친환경 설계, 명품 마감재까지.<br>주거의 품격을 높이는 다양한 프리미엄 요소가 집약되어 있습니다.</p>
+    <img src="https://koomanizm.github.io/ecoartera/premium.jpg" alt="프리미엄">
+  </section>
+
+  <section id="contact">
+    <h2>사전방문예약등록</h2>
+    <p>방문예약 후 모델하우스 관람이 가능합니다.</p>
+    <p style="font-size: 3rem; font-weight: 600; color: #004c97; margin-bottom: 1rem;">
+      상담문의 : 051-520-4767
+    </p>
+    <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">방문예약 신청하기</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 에코델타시티 아테라. <br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
+  </footer>
 
   <script>
     const hamburger = document.getElementById("hamburger");
