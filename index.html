@@ -31,37 +31,30 @@
       font-size: 1.5rem;
       color: #004c97;
     }
-
     nav {
       display: flex;
       gap: 1.5rem;
     }
-
     nav a {
       text-decoration: none;
       color: #004c97;
       font-weight: 500;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: #009bda;
     }
-
-    /* 햄버거 메뉴 */
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .hamburger div {
       width: 25px;
       height: 3px;
       background-color: #004c97;
       margin: 4px 0;
     }
-
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -74,76 +67,55 @@
       padding: 1rem;
       z-index: 999;
     }
-
     .mobile-nav a {
       padding: 0.5rem 0;
       color: #004c97;
       text-decoration: none;
       font-weight: 500;
     }
-
     .mobile-nav a:hover {
       color: #009bda;
     }
-
     .hero {
       position: relative;
       width: 100%;
       overflow: hidden;
     }
-
     .hero img {
       width: 100%;
       height: auto;
       display: block;
     }
-
-    /* 메인 이미지 아래 텍스트 */
     .main-text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
       text-align: center;
-      margin: 1.5rem 1rem 3rem 1rem;
-      font-family: 'Noto Sans KR', sans-serif;
-      color: #004c97;
     }
-
     .main-text h2 {
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .main-text p {
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem;
-      font-weight: 600;
-    }
-
-    .main-text h1 {
-      font-size: 2.8rem;
+      font-weight: 900;
+      font-size: 3rem;
       margin: 0;
-      background: linear-gradient(90deg, #004c97, #0078cc);
+      background: linear-gradient(90deg, #004c97, #00b4db);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 900;
     }
-
     section {
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
     }
-
     section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #004c97;
     }
-
     section p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
-
     section img {
       width: 100%;
       height: auto;
@@ -151,7 +123,6 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       margin-bottom: 1rem;
     }
-
     .contact-button {
       display: inline-block;
       background-color: #004c97;
@@ -163,11 +134,9 @@
       text-decoration: none;
       transition: background-color 0.3s;
     }
-
     .contact-button:hover {
       background-color: #0078cc;
     }
-
     footer {
       background-color: #111;
       color: #fff;
@@ -175,73 +144,21 @@
       padding: 2rem;
       font-size: 0.9rem;
     }
-
     footer a {
       color: #ccc;
       text-decoration: underline;
     }
-    .main-text h2 {
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
 
-.main-text p {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.main-text {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.main-text h1 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #004c97, #00b4db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-
-/* 모바일용 스타일 */
-@media (max-width: 768px) {
-  .main-text h2 {
-    font-size: 1.4rem;
-  }
-  .main-text p {
-    font-size: 1rem;
-  }
-  .main-text h1 {
-    font-size: 2rem;
-  }
-}
-
-    /* 모바일 스타일 */
     @media (max-width: 768px) {
       nav {
         display: none;
       }
-
       .hamburger {
         display: flex;
       }
-
       .main-text h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
-      .main-text p {
-        font-size: 1rem;
-      }
-      .main-text h1 {
-        font-size: 2rem;
-      }
-
       section {
         padding: 2rem 1rem;
       }
@@ -279,8 +196,7 @@
   </div>
 
   <section class="main-text">
-    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집 GRAND OPEN </h2>
-
+    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집 GRAND OPEN</h2>
   </section>
 
   <section id="intro">
@@ -338,14 +254,12 @@
       mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
     });
 
-    // 메뉴 클릭 시 닫힘
     document.querySelectorAll(".mobile-nav a").forEach(link => {
       link.addEventListener("click", () => {
         mobileNav.style.display = "none";
       });
     });
 
-    // 바깥 클릭 시 닫힘
     document.addEventListener("click", (event) => {
       if (!mobileNav.contains(event.target) && !hamburger.contains(event.target)) {
         mobileNav.style.display = "none";
