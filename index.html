@@ -95,12 +95,27 @@
       text-align: center;
     }
     .main-text h2 {
-      font-weight: 900;
-      font-size: 3rem;
-      margin: 0;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
       background: linear-gradient(90deg, #004c97, #00b4db);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .main-text h2 {
+        font-size: 1.4rem;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
     }
     section {
       padding: 4rem 2rem;
@@ -148,21 +163,6 @@
       color: #ccc;
       text-decoration: underline;
     }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .main-text h2 {
-        font-size: 1.5rem;
-      }
-      section {
-        padding: 2rem 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -195,11 +195,9 @@
     <img src="https://koomanizm.github.io/ecoartera/mainhome.jpg" alt="에코델타시티 금호아테라 메인 이미지" />
   </div>
 
-<section class="main-text">
-  <h2>
-    에코델타시티 아테라 | 5월 25일 선착순 모집<br><span class="highlight">GRAND OPEN !!!</span>
-  </h2>
-</section>
+  <section class="main-text">
+    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<br>GRAND OPEN</h2>
+  </section>
 
   <section id="intro">
     <h2>단지소개</h2>
@@ -218,6 +216,12 @@
     <img src="https://koomanizm.github.io/ecoartera/unit06.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit07.jpg" alt="세대평면도">
     <img src="https://koomanizm.github.io/ecoartera/unit08.jpg" alt="세대평면도">
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://vrapoint.speedgabia.com/insite-ol/?pid=ecodelta24bl" target="_blank" style="display: inline-block; font-size: 1.2rem; color: #004c97; font-weight: bold; text-decoration: underline;">
+        사이버모델하우스 보기
+      </a>
+    </div>
   </section>
 
   <section id="location">
@@ -241,6 +245,9 @@
   <section id="contact">
     <h2>관심고객등록</h2>
     <p>관심 고객 등록 시 분양정보, 일정 등을 가장 빠르게 알려드립니다.</p>
+    <p style="font-size: 1.1rem; font-weight: 600; color: #004c97; margin-bottom: 1rem;">
+      상담문의 : 051-520-4767
+    </p>
     <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">관심고객 등록하기</a>
   </section>
 
