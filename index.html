@@ -130,15 +130,51 @@
       }
     }
     section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #004c97;
-    }
+  padding: 5rem 2rem; /* 위쪽 패딩을 좀 더 늘림 */
+  max-width: 1200px;
+  margin: auto;
+}
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem; /* 여백 살짝 키움 */
+  color: #004c97;
+  line-height: 1.2; /* 줄 간격 약간 조절 */
+}
+
+/* 2. 모바일 메인 문구 자연스럽게 */
+.main-text h2 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #004c97, #00b4db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.3;
+}
+@media (max-width: 768px) {
+  .main-text h2 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+  .main-text h2 span {
+    display: block; /* 줄바꿈 역할 */
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* 3. 모바일 섹션 제목, 본문 글씨 크기 조정 */
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+}
     section p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
@@ -208,7 +244,7 @@
   </div>
 
   <section class="main-text">
-    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<br>GRAND OPEN</h2>
+    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<span>GRAND OPEN</span></h2>
   </section>
 
   <section id="intro">
