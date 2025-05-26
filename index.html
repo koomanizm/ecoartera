@@ -86,53 +86,22 @@
       height: auto;
       display: block;
     }
-
-  ...
-
-  /* 기존 .hero-text-overlay 부분을 이렇게 수정하세요 */
-  .hero-text-overlay {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    text-align: center;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    width: 90%;
-    max-width: 480px;
-    z-index: 10;
-    padding: 1rem;
-    line-height: 1.6;
-  }
-
-  .hero-text-overlay .highlight {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #ffeb3b;
-  }
-
-  .hero-text-overlay .emart {
-    font-size: 1.1rem;
-    margin: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-  }
-
-  .hero-text-overlay .emart img {
-    height: 1.2rem;
-    vertical-align: middle;
-  }
-
-  .hero-text-overlay .tagline {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-
-  ...
+    /* hero-text-overlay 스타일 (추가) */
+    .hero-text-overlay {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      font-size: 1.2rem;
+      line-height: 1.4;
+      width: 90%;
+      max-width: 400px;
+      z-index: 10;
+    }
     .hero-text-overlay img {
       height: 1.2rem;
       vertical-align: middle;
@@ -268,14 +237,19 @@
     </div>
   </header>
 
-<div class="hero-text-overlay">
-  <div class="tagline">25평형(희귀) · 34평형(방4) 구성</div>
-  <div class="tagline">초·중학교 품은 학세권</div>
-  <div class="emart">
-    예약 방문 시 이마트 상품권 증정 !
+  <div class="hero">
+    <img src="https://koomanizm.github.io/ecoartera/mainhome.jpg" alt="에코델타시티 금호아테라 메인 이미지" />
+    <div class="hero-text-overlay">
+      <div>25평형(희귀) / 34평형(방4)</div>
+      <div>(초품아 입지)</div>
+      <div>
+        예약 후 방문 시
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Emart_logo.svg/2560px-Emart_logo.svg.png" alt="e마트" />
+        상품권 증정!
+      </div>
+      <div>평당 1600만원대 분양가!</div>
+    </div>
   </div>
-  <div class="highlight">평당 1600만원대 분양가!</div>
-</div>
 
   <section class="main-text">
     <h2>에코델타시티 아테라 | 5월 25일 선착순 모집<span>GRAND OPEN</span></h2>
