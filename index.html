@@ -2,20 +2,20 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>에코델타시티 아테라</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://koomanizm.github.io/ecoartera/favicons.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://koomanizm.github.io/ecoartera/favicons.ico" type="image/x-icon" />
   <style>
+    /* 기존 스타일 유지 */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Noto Sans KR', sans-serif;
       color: #333;
       background-color: #fff;
+      font-size: 15px;
     }
     header {
       background-color: #fff;
@@ -41,6 +41,7 @@
       color: #004c97;
       font-weight: 500;
       transition: color 0.3s;
+      cursor: pointer;
     }
     nav a:hover {
       color: #009bda;
@@ -73,38 +74,54 @@
       color: #004c97;
       text-decoration: none;
       font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
     }
     .mobile-nav a:hover {
       color: #009bda;
+    }
+    .hero {
+      position: relative;
     }
     .hero img {
       width: 100%;
       height: auto;
       display: block;
     }
-    .main-text {
+    .main-text-overlay {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
       text-align: center;
-      padding: 2rem 1rem;
+      max-width: 90%;
+      color: #004c97;
+      font-weight: 600;
+      line-height: 1.3;
+
+      /* 스르르 나타나는 효과 추가 */
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      box-shadow: none;
+      filter: none !important;
     }
-    .main-text h2 {
+    .main-text-overlay.visible {
+      opacity: 1;
+    }
+    .main-text-overlay h2 {
       font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.5rem; /* PC에서 글자 크기 2배 */
+      margin-bottom: 0.6rem;
       background: linear-gradient(90deg, #004c97, #00b4db);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.4;
-    }
-    .main-text h2 span {
-      display: block;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-    .main-text p {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #004c97;
-      margin-top: 1rem;
+      background-clip: text;
+      text-fill-color: transparent;
+      filter: none !important;
+      text-shadow: none !important;
     }
     @media (max-width: 768px) {
       nav {
@@ -113,8 +130,15 @@
       .hamburger {
         display: flex;
       }
-      .main-text h2 {
-        font-size: 1.6rem;
+      .main-text-overlay {
+        font-size: 0.9rem;
+        padding: 1rem 1.2rem;
+        top: 50%; /* 모바일에선 살짝 더 위로 */
+      }
+      .main-text-overlay h2 {
+        font-size: 1.1rem; /* 모바일 기존 크기 유지 */
+        background: none;
+        -webkit-text-fill-color: initial;
       }
       section h2 {
         font-size: 1.5rem;
@@ -123,30 +147,6 @@
         font-size: 1rem;
       }
     }
-    body {
-    font-size: 15px;
-  }
-
-  .main-text p {
-    font-size: 1.2rem;
-  }
-
-  .mobile-nav a {
-    font-size: 1rem;
-  }
-
-  .contact-button {
-    font-size: 0.95rem;
-    padding: 0.7rem 1.2rem;
-  }
-
-  footer {
-    font-size: 0.8rem;
-  }
-
-  footer a {
-    font-size: 0.8rem;
-  }
     section {
       padding: 5rem 2rem;
       max-width: 1200px;
@@ -177,6 +177,8 @@
       font-size: 1rem;
       border-radius: 5px;
       text-decoration: none;
+      transition: background-color 0.3s;
+      cursor: pointer;
     }
     .contact-button:hover {
       background-color: #0078cc;
@@ -192,6 +194,51 @@
       color: #ccc;
       text-decoration: underline;
     }
+
+    /* 모달 스타일: 방문예약등록 풀스크린 */
+    #contactModal {
+      display: none; /* 기본 숨김 */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 3rem 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    #contactModal h2 {
+      font-size: 2.5rem;
+      color: #004c97;
+      margin-bottom: 1rem;
+    }
+    #contactModal p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    #contactModal a.contact-button {
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+    }
+    #contactModal .close-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #004c97;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 2100;
+      transition: background-color 0.3s;
+    }
+    #contactModal .close-btn:hover {
+      background-color: #0078cc;
+    }
   </style>
 </head>
 <body>
@@ -203,7 +250,7 @@
       <a href="#location">입지환경</a>
       <a href="#community">커뮤니티</a>
       <a href="#premium">프리미엄</a>
-      <a href="#contact">방문예약등록</a>
+      <a id="openContactModal">방문예약등록</a>
     </nav>
     <div class="hamburger" id="hamburger">
       <div></div><div></div><div></div>
@@ -214,28 +261,26 @@
       <a href="#location">입지환경</a>
       <a href="#community">커뮤니티</a>
       <a href="#premium">프리미엄</a>
-      <a href="#contact">방문예약등록</a>
+      <a id="openContactModalMobile">방문예약등록</a>
     </div>
   </header>
 
   <div class="hero">
     <img src="https://koomanizm.github.io/ecoartera/mainhome.jpg" alt="에코델타시티 금호아테라 메인 이미지" />
+    <div class="main-text-overlay">
+      <h2>에코델타시티 아테라 | 5월 25일 선착순 모집 <br>GRAND OPEN</h2>
+      <h2>25평(희귀)/34평(방4) | 공공분양으로 저렴한 분양가<br>초품아(feat.유치원), 중학교까지 초인접!!</h2>
+      <h2>상담문의 : 051-991-0749</h2>
+    </div>
   </div>
 
-  <section class="main-text">
-    <h2>에코델타시티 아테라 | 5월 25일 선착순 모집 <br>GRAND OPEN</h2>
-    <h2>25평(희귀)/34평(방4) | 공공분양으로 저렴한 분양가<br>초품아(feat.유치원), 중학교까지 초인접!!</h2>
-    <br>
-    <h2>상담문의 : 051-520-4767</h2>
-  </section>  
-  
-  <section id="contact2">
+<section id="contact2">
     <h2>사전방문예약등록</h2>
     <p>방문예약 후 모델하우스 관람이 가능합니다.</p>
     <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">방문예약 신청하기</a>
   </section>
 
-  <section id="intro">
+   <section id="intro">
     <h2>단지소개</h2>
     <p>에코델타시티 중심에서 만나는 미래형 스마트 주거공간.<br>수변과 공원이 어우러진 자연친화적인 환경에서 최고의 삶을 누리세요.</p>
     <img src="https://koomanizm.github.io/ecoartera/complex.jpg" alt="단지소개">
@@ -281,29 +326,62 @@
     <h2>상담문의 : 051-520-4767</h2>
   </section>
 
-  <section id="contact">
-    <h2>사전방문예약등록</h2>
-    <p>방문예약 후 모델하우스 관람이 가능합니다.</p>
-    <h2>상담문의 : 051-520-4767</h2>
-    <a class="contact-button" href="https://naver.me/5gYPRmCA" target="_blank">방문예약 신청하기</a>
-  </section>
-
   <footer>
     <p>&copy; 2025 에코델타시티 아테라<br>이미지 출처: <a href="https://arteraedc.co.kr" target="_blank">arteraedc.co.kr</a></p>
   </footer>
 
+  <!-- 방문예약등록 모달 -->
+  <div id="contactModal">
+    <button class="close-btn" id="closeContactModal">닫기 ✕</button>
+    <h2>방문예약등록</h2>
+    <p>아래 네이버 폼을 작성하시면 담당자가 빠르게 연락드립니다.</p>
+    <iframe src="https://naver.me/5gYPRmCA" width="100%" height="2000" frameborder="0" marginheight="0" marginwidth="0">로딩 중…</iframe>
+  </div>
+
   <script>
+    // 햄버거 메뉴 열기/닫기
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
 
     hamburger.addEventListener('click', () => {
-      mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+      if(mobileNav.style.display === 'flex'){
+        mobileNav.style.display = 'none';
+      } else {
+        mobileNav.style.display = 'flex';
+      }
     });
 
-    mobileNav.querySelectorAll('a').forEach(link => {
+    // 모바일 메뉴 클릭 시 자동 닫힘
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.style.display = 'none';
       });
+    });
+
+    // 방문예약등록 모달 열기 (PC)
+    const openContactModal = document.getElementById('openContactModal');
+    // 방문예약등록 모달 열기 (모바일)
+    const openContactModalMobile = document.getElementById('openContactModalMobile');
+    const contactModal = document.getElementById('contactModal');
+    const closeContactModal = document.getElementById('closeContactModal');
+
+    openContactModal.addEventListener('click', () => {
+      contactModal.style.display = 'block';
+      mobileNav.style.display = 'none'; // 메뉴 닫기
+    });
+    openContactModalMobile.addEventListener('click', () => {
+      contactModal.style.display = 'block';
+      mobileNav.style.display = 'none'; // 메뉴 닫기
+    });
+    closeContactModal.addEventListener('click', () => {
+      contactModal.style.display = 'none';
+    });
+
+    // 스르르 나타나는 효과 - 페이지 열리면 main-text-overlay에 visible 클래스 추가
+    window.addEventListener('DOMContentLoaded', () => {
+      const mainText = document.querySelector('.main-text-overlay');
+      mainText.classList.add('visible');
     });
   </script>
 </body>
