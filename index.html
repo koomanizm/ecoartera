@@ -244,37 +244,40 @@
 <body>
 
 
-
+<!-- 전화 연결 배너 (하단 고정) -->
 <style>
-  .call-banner {
+  .call-banner-bottom {
     position: fixed;
-    top: 0;
+    bottom: 0;
     width: 100%;
     background-color: #003366;
     color: white;
     text-align: center;
-    padding: 12px 0;
+    padding: 14px 0;
     font-size: 1.1rem;
     font-weight: bold;
     z-index: 9999;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
   }
-  .call-banner a {
+
+  .call-banner-bottom a {
     color: #ffffff;
     text-decoration: none;
   }
-  .call-banner a:hover {
+
+  .call-banner-bottom a:hover {
     text-decoration: underline;
   }
 
   body {
-    padding-top: 52px; /* 배너 높이만큼 여백 추가 */
+    padding-bottom: 60px; /* 배너 높이만큼 여백 추가 */
   }
 </style>
 
-<div class="call-banner">
-  📞 <a href="tel:0519348182">모델하우스 상담 문의 051-520-4767</a>
+<div class="call-banner-bottom">
+  📞 <a href="tel:0519348182">모델하우스 상담 문의 051-934-8182</a>
 </div>
+
 
 
 
