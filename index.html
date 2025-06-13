@@ -123,30 +123,42 @@
       filter: none !important;
       text-shadow: none !important;
     }
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .main-text-overlay {
-        font-size: 0.9rem;
-        padding: 1rem 1.2rem;
-        top: 50%; /* 모바일에선 살짝 더 위로 */
-      }
-      .main-text-overlay h2 {
-        font-size: 1.1rem; /* 모바일 기존 크기 유지 */
-        background: none;
-        -webkit-text-fill-color: initial;
-      }
-      section h2 {
-        font-size: 1.5rem;
-      }
-      section p {
-        font-size: 1rem;
-      }
-    }
+   @media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .hero img {
+    height: 85vh; /* 세로 비율 조정: 이미지 높이 확대 */
+    object-fit: cover; /* 자르지 않고 꽉 차게 */
+  }
+  .main-text-overlay {
+    font-size: 1rem;
+    padding: 1.2rem 1.2rem;
+    top: 55%; /* 위치 조금 위로 */
+    width: 95%; /* 배경을 더 넓게 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    line-height: 1.4;
+  }
+  .main-text-overlay h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #004c97;
+  }
+  section h2 {
+    font-size: 1.5rem;
+  }
+  section p {
+    font-size: 1rem;
+  }
+}
     section {
       padding: 5rem 2rem;
       max-width: 1200px;
